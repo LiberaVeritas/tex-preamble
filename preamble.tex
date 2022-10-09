@@ -1,16 +1,12 @@
 %\usepackage[utf8]{inputenc}    % not with lualatex
 %\usepackage[english]{babel}    % not with lualatex
-\usepackage{microtype}
-
-\usepackage{polyglossia}
-\setdefaultlanguage{english}
 
 %\usepackage[hybrid, underscores=false, codeSpans=false]{markdown}
 
 %\usepackage{amssymb}    % lualatex
 
 
-\usepackage{amsmath, amsthm}
+
 %\usepackage[italicdiff]{physics}
 
 %\usepackage[none]{hyphenat}             % disables hyphenated words at end of paragraph
@@ -22,7 +18,7 @@
 %\settowidth{\alphabet}{abcdefghijklmnopqrstuvwxyz}
 %\geometry{textwidth=2.5\alphabet}
 
-\usepackage{enumitem}
+
 %\setlist[enumerate,1]{leftmargin=0pt}   % pushes enum items to the margin
 
 %\usepackage{libertine}
@@ -36,86 +32,105 @@
 
 %\usepackage[T1]{fontenc}   % not with lualatex
 
+\usepackage{microtype}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{canadian}
+
+\usepackage{amsmath, amsthm}
+\usepackage{mathtools}  % must load before unicode-math and fontspec
+
+\usepackage{enumitem}
+
+\usepackage{lualatex-math}
+
 \usepackage{fontspec}
-\usepackage{mathtools}  % must load before unicode-math
-\usepackage[math-style=TeX, bold-style=TeX]{unicode-math}
+
+\usepackage[warnings-off={mathtools-colon, mathtools-overbracket}, math-style=TeX, bold-style=TeX]{unicode-math}
+
+% doc: https://ctan.mirror.globo.tech/macros/unicodetex/latex/unicode-math/unicode-math.pdf
+% commands: https://ctan.mirror.rafal.ca/macros/unicodetex/latex/unicode-math/unimath-symbols.pdf
 % options: https://texdoc.org/serve/unicode-math/0
 
 
 \usepackage[CharacterVariant={3,6}, Style={subsetneq}]{fourier-otf}    %varepsilon and varphi
+
 % info: https://ctan.math.washington.edu/tex-archive/fonts/erewhon-math/Erewhon-Math.pdf
 
 
-\renewcommand{\subset}{\subseteq}
 
-\newcommand{\C}{\symbf C}
-\newcommand{\F}{\symbf F}
-\newcommand{\N}{\symbf N}
-%\newcommand{\PP}{\textbf P}
-\newcommand{\Q}{\symbf Q}
-\newcommand{\R}{\symbf R}
-\newcommand{\Z}{\symbf Z}
-
-\newcommand{\inv}{^{-1}}
-\newcommand{\pre}{^{\preimage}}
-\newcommand{\img}{^{\image}}
-
-%\newcommand{\eps}{\varepsilon}
-
-
-\DeclareMathOperator{\noremptyset}{\text{\O}}
-\renewcommand{\emptyset}{\noremptyset}
-
-\DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\Char}{char}
-\DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\Gal}{Gal}
-\DeclareMathOperator{\GL}{GL}
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\Ind}{Ind}
-\DeclareMathOperator{\SL}{SL}
-\DeclareMathOperator{\Spec}{Spec}
-
-\DeclareMathOperator{\coker}{coker}
-\DeclareMathOperator{\id}{id}
-\DeclareMathOperator{\im}{im}
-\DeclareMathOperator{\preimage}{pre}
-\DeclareMathOperator{\image}{img}
-
-\DeclarePairedDelimiter{\paren}{\lparen}{\rparen}
-\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
-
-% switch starred version of \set
-\makeatletter
-\let\oldset\set
-\def\set{\@ifstar{\oldset}{\oldset*}}
-\makeatother
-
-% switch starred version of \paren
-\makeatletter
-\let\oldparen\paren
-\def\paren{\@ifstar{\oldparen}{\oldparen*}}
-\makeatother
-
-\newtheorem*{theorem}{Theorem}
-\newtheorem*{lemma}{Lemma}
-\newtheorem*{coro}{Corollary}
-
-\theoremstyle{definition}
-\newtheorem*{definition}{Definition}
-
-\newtheorem*{example}{Example}
-
-
-%\newtheorem{thm}{Theorem}
-%\newtheorem{lemma}[thm]{Lemma}
-%\newtheorem{cor}[thm]{Corollary}
-%\newtheorem{prop}[thm]{Proposition}
-%\newtheorem{claim}[thm]{Claim}
-
-%\theoremstyle{definition}
-%\newtheorem{defn}[thm]{Definition}
-
-%\theoremstyle{remark}
-%\newtheorem{remark}[thm]{Remark}
-%\newtheorem{example}{Example}
+\AtBeginDocument{
+    \renewcommand{\subset}{\subseteq}
+    
+    \newcommand{\C}{\symbf C}
+    \newcommand{\F}{\symbf F}
+    \newcommand{\N}{\symbf N}
+    %\newcommand{\PP}{\textbf P}
+    \newcommand{\Q}{\symbf Q}
+    \newcommand{\R}{\symbf R}
+    \newcommand{\Z}{\symbf Z}
+    
+    \newcommand{\inv}{^{-1}}
+    \newcommand{\pre}{^{\preimage}}
+    \newcommand{\img}{^{\image}}
+    
+    %\newcommand{\eps}{\varepsilon}
+    
+    
+    \DeclareMathOperator{\noremptyset}{\text{\O}}
+    \renewcommand{\emptyset}{\noremptyset}
+    
+    \DeclareMathOperator{\Aut}{Aut}
+    \DeclareMathOperator{\Char}{char}
+    \DeclareMathOperator{\End}{End}
+    \DeclareMathOperator{\Gal}{Gal}
+    \DeclareMathOperator{\GL}{GL}
+    \DeclareMathOperator{\Hom}{Hom}
+    \DeclareMathOperator{\Ind}{Ind}
+    \DeclareMathOperator{\SL}{SL}
+    \DeclareMathOperator{\Spec}{Spec}
+    
+    \DeclareMathOperator{\coker}{coker}
+    \DeclareMathOperator{\id}{id}
+    \DeclareMathOperator{\im}{im}
+    \DeclareMathOperator{\preimage}{pre}
+    \DeclareMathOperator{\image}{img}
+    
+    \DeclarePairedDelimiter{\paren}{\lparen}{\rparen}
+    \DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+    
+    % switch starred version of \set
+    \makeatletter
+    \let\oldset\set
+    \def\set{\@ifstar{\oldset}{\oldset*}}
+    \makeatother
+    
+    % switch starred version of \paren
+    \makeatletter
+    \let\oldparen\paren
+    \def\paren{\@ifstar{\oldparen}{\oldparen*}}
+    \makeatother
+    
+    \newtheorem*{theorem}{Theorem}
+    \newtheorem*{lemma}{Lemma}
+    \newtheorem*{coro}{Corollary}
+    
+    \theoremstyle{definition}
+    \newtheorem*{definition}{Definition}
+    
+    \newtheorem*{example}{Example}
+    
+    
+    %\newtheorem{thm}{Theorem}
+    %\newtheorem{lemma}[thm]{Lemma}
+    %\newtheorem{cor}[thm]{Corollary}
+    %\newtheorem{prop}[thm]{Proposition}
+    %\newtheorem{claim}[thm]{Claim}
+    
+    %\theoremstyle{definition}
+    %\newtheorem{defn}[thm]{Definition}
+    
+    %\theoremstyle{remark}
+    %\newtheorem{remark}[thm]{Remark}
+    %\newtheorem{example}{Example}
+}
